@@ -1,2 +1,2 @@
-Henry Hill's Resume Website 
-URL: https://henrychill.github.io/hillchenry.github.io/
+## Henry Hill's Resume Website <br />
+URL: hillchenry.com 
