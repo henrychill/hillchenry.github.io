@@ -1,98 +1,659 @@
 <!DOCTYPE html>
-<html lang = "en">
-	<head>
-		<title>henry hill</title>
-		<link rel="stylesheet" href="style.css">
-	</head>	
-		<body>
-				<center>
-    			<h1><em>Henry Hill</em></h1>
-				<img src="seniorgrad.jpg" alt="Picture of Henry Hill" style="width:200px;height:250px;">
-				<nav>
-					<a href="mailto:he086477@ucf.edu"target="_blank" >UCF Email </a><br>
-					<a href="https://www.linkedin.com/in/ithenryhill/" target="_blank">LinkedIn </a><br>
-					<a href="ResumeAug2025.pdf" target="_blank">Resume </a>
-				</center>
-				</nav>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henry Hill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Schibsted+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0e0e0c;
+  --bone:#f5f2ec;
+  --mid:#9e9c97;
+  --faint:#e4e1da;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Schibsted Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bone);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  overflow-x:hidden;
+}
 
-				<br>
-				<h2> Personal Objective Statement </h2>
-				<p>Hey! My name is Henry, and I am a Junior at University of Central Florida, studying Information Technology. My goals are pretty straightforward; by the time I graduate, I'd like to have some experience in cybersecurity and be able to jumip into a Security Analyst role, where I can grow as a professional and as a person. A defining feature about me is that I love to learn, about my career, my passions, the world, etc.  </p> <br>
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.75rem 3rem;
+  transition:background .3s,backdrop-filter .3s;
+}
+.nav-mark{
+  font-family:var(--serif);
+  font-size:1rem;
+  font-weight:300;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--mid);
+  text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-resume{
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:1px;
+  transition:color .2s,border-color .2s;
+}
+.nav-resume:hover{color:var(--mid);border-color:var(--mid)}
 
-				<h2> Education </h2>
-				<h3> Unversity of Central Florida - Bachelor's in Science | Information Technology - 2023 to Present </h3>
-				<p> Involvement: Hack@UCF, UCF Sailing Race Team, ReconnectUCF, LEAD Scholars Academy, Seminole Education and Restoration Volunteer Program (SERV)</p>
-				<p> Skills: Tenacious Work Ethic, C/C++, Java, OS (Linux, macOS, Windows), Service Learning, Presentation, Networking. </p>
-				<br>
-				<h3> Zurich University of Applied Sciences - Study Abroad | Computer Science - 2025</h3>
-				<p> Involvement: Erasumus Student Network </p>
-				<p> Skills: German, Kubernetes, Mobile Networks (802.15.4), BLE, DevOps Practices and Application, IoT Devices and Transmission </p>
-				<br>
-				<h3> Florida Gulf Coast University - Dual Enrollment | Computer Infromation Systems - 2021 to 2023</h3>
-				<p> Involvement: Accelerated Collegiate Experience, ONDECC Project Film Club, FGCU Car Club </p>
-				<p> Skills: Python, Leadership, Entrepreneurship </p>
-				<br> <br>
-				
-				<h2> Experience </h2>
-				<h3> Systems Specialist Intern - B2 Solutions </h3>
-				<p> My role at B2 was primarily streamlining the on-boarding/off-boarding process by documenting the workflows and automation procedures for each internal client. But my responsibilities extended to working within RMM software as an automation technician and systems administrator. This part of my job taught me PowerShell (Graph, .NET), the Kaseya suite, and Microsoft infrastructure (Intune, Azure/Active Directory, 365). The final component of this internship was leveraging the improvements I made to documentation and the automation tools to provision machines to clients, where I saw if my changes created positive change in the effectiveness of the company.</p>
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:1fr auto;
+  padding:0 3rem 3rem;
+}
+.hero-body{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding-bottom:4.5rem;
+}
+.hero-kicker{
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-bottom:2.5rem;
+  opacity:0;
+  animation:rise .9s ease forwards .2s;
+}
+.hero-name{
+  font-family:var(--serif);
+  font-size:clamp(5.5rem,13vw,12rem);
+  font-weight:300;
+  font-style:italic;
+  line-height:.88;
+  letter-spacing:-.02em;
+  margin-bottom:4rem;
+  opacity:0;
+  animation:rise .9s ease forwards .4s;
+}
+.hero-name em{
+  font-style:normal;
+  display:block;
+  padding-left:3.5rem;
+}
+.hero-desc{
+  font-size:.95rem;
+  line-height:2;
+  color:var(--mid);
+  letter-spacing:.02em;
+  opacity:0;
+  animation:rise .9s ease forwards .65s;
+}
+.hero-desc strong{color:var(--ink);font-weight:500}
+.hero-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--faint);
+  padding-top:1.5rem;
+  opacity:0;
+  animation:rise .9s ease forwards .9s;
+}
+.hero-foot-note{
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--mid);
+}
+.hero-cta{
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  padding-bottom:1px;
+  transition:color .2s;
+}
+.hero-cta:hover{color:var(--mid)}
+@keyframes rise{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
 
-				<br>
-				<h2> Projects </h2>
-				<nav>
-					<ul>
-						<a href="migrationproject.html">Migration Project</a> <br>
-						<a href="kubernetesproject.html">DevOps Kubernetes Project</a>	<br>
-						<a href="techwriting.html">Technical Writing Project(s)</a>
+.hr{width:100%;height:1px;background:var(--faint)}
 
-					</ul>
-				</nav>
+section{padding:8rem 3rem;max-width:1200px;margin:0 auto}
+.s-num{
+  display:block;
+  font-size:.7rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-bottom:5rem;
+}
+h2.st{
+  font-family:var(--serif);
+  font-size:clamp(3.5rem,6vw,6.5rem);
+  font-weight:300;
+  font-style:italic;
+  line-height:.95;
+  letter-spacing:-.015em;
+  margin-bottom:5rem;
+}
 
-				<h2> Skills </h2>
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.reveal.on{opacity:1;transform:none}
 
-				<nav class="skills-nav">
-					<ul>
-						<li>
-						<a href="#">Programming</a>
-   						<ul class="dropdown">
-    						<li>Python</li>
-  						  	<li>C++ / Java (OOP)</li>
-						    <li>Powershell / Bash</li>
-						</ul>
-						</li>
-					    <li>
-						<a href="#">Systems</a>
-						<ul class="dropdown">
- 				        	<li>Linux / Windows / macOS</li>
-    				    	<li>Azure / Intune / AD</li>
-     				   		<li>Kaseya RMM</li>
-						</ul>
-						</li>
-						<li>
-						<a href="#">Networking</a>
-						<ul class="dropdown">
-							<li>Mobile Networks (802.15.4)</li>
-							<li>Kubernetes</li>
-							<li>DevOps Practices</li>
- 				     	</ul>
-				   		</li>
-				    	<li>
-						<a href="#">Other</a>
-						<ul class="dropdown">
-				        	<li>Leadership</li>
-  				        	<li>Technical Documentation</li>
-							<li>Project Management</li>
-					  	</ul>
-					</li>
-				 </ul>
-			 	</nav>
+#about .ag{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6rem;
+  align-items:start;
+}
+.ac p{
+  font-size:1rem;
+  line-height:2;
+  color:var(--mid);
+  margin-bottom:1.2rem;
+}
+.ac p strong{color:var(--ink);font-weight:500}
+.ac p em{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--ink);
+}
 
-				<br>
-				<h2> Awards and Honors </h2>
-				<h3>Eagle Scout - BSA Nov 2020</h3>
-				<p>As a final step to the traditional path in Scouting, I earned the Eagle rank. Through developing myself with a broad variety of merit badges, community service, and leadership within my troop. As capstone project, I planned and lead a service project, where we planted trees at my local elementary school.</p>
-				<br>
-				<br>
-	</body>
-</html>
 
+.eg{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--faint);
+  border:1px solid var(--faint);
+}
+.ec{background:var(--bone);padding:3rem}
+.et{
+  font-size:.7rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-bottom:2rem;
+}
+.es{
+  font-family:var(--serif);
+  font-size:1.75rem;
+  font-weight:300;
+  font-style:italic;
+  line-height:1.2;
+  margin-bottom:.85rem;
+}
+.el{font-size:.9rem;color:var(--mid);line-height:2}
+
+.exp-row{
+  display:grid;
+  grid-template-columns:64px 1fr 1fr;
+  gap:3rem;
+  padding:3rem 0;
+  border-bottom:1px solid var(--faint);
+  align-items:start;
+}
+.exp-row:first-of-type{border-top:1px solid var(--faint)}
+.exp-idx{font-size:.68rem;letter-spacing:.12em;color:var(--mid);padding-top:.15rem}
+.exp-title{
+  font-family:var(--serif);
+  font-size:1.55rem;
+  font-weight:300;
+  font-style:italic;
+  line-height:1.25;
+}
+.exp-meta{
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-top:.4rem;
+  line-height:1.9;
+}
+.exp-body{
+  font-size:.92rem;
+  line-height:2;
+  color:var(--mid);
+  padding-top:.15rem;
+}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.75rem}
+.chip{
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--mid);
+  border:1px solid var(--faint);
+  padding:.3rem .8rem;
+  transition:border-color .2s,color .2s;
+}
+.chip:hover{border-color:var(--ink);color:var(--ink)}
+
+.pl{
+  font-size:.95rem;
+  color:var(--mid);
+  line-height:2;
+  margin-top:-3.5rem;
+  margin-bottom:4rem;
+}
+.pr{
+  display:grid;
+  grid-template-columns:64px 1fr 1fr;
+  gap:3rem;
+  padding:3rem 0;
+  border-bottom:1px solid var(--faint);
+  align-items:start;
+}
+.pr:first-of-type{border-top:1px solid var(--faint)}
+.pr:hover .pn{text-decoration:underline;text-underline-offset:5px}
+.pi{font-size:.68rem;letter-spacing:.12em;color:var(--mid);padding-top:.15rem}
+.pn{
+  font-family:var(--serif);
+  font-size:1.55rem;
+  font-weight:300;
+  font-style:italic;
+  line-height:1.25;
+}
+.pd-date{
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--mid);
+  margin-top:.4rem;
+}
+.pd{font-size:.92rem;line-height:2;color:var(--mid);padding-top:.15rem}
+
+#skills .sb{
+  display:flex;
+  flex-direction:column;
+}
+.sk-row{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:3rem;
+  padding:2rem 0;
+  border-bottom:1px solid var(--faint);
+  align-items:baseline;
+}
+.sk-row:first-of-type{border-top:1px solid var(--faint)}
+.sgt{
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--mid);
+  padding-top:.15rem;
+  flex-shrink:0;
+}
+.sgl{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem;
+}
+.sgl li{
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--mid);
+  border:1px solid var(--faint);
+  padding:.3rem .8rem;
+  transition:border-color .2s,color .2s;
+}
+.sgl li:hover{border-color:var(--ink);color:var(--ink)}
+.sgl li.sc{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:.78rem;
+  text-transform:none;
+  letter-spacing:.04em;
+}
+
+
+
+#contact{padding:10rem 3rem 8rem;max-width:1200px;margin:0 auto}
+.ch{
+  font-family:var(--serif);
+  font-size:clamp(3.5rem,8vw,8rem);
+  font-weight:300;
+  font-style:italic;
+  line-height:.92;
+  letter-spacing:-.02em;
+  margin-bottom:4.5rem;
+}
+.cl{display:flex;flex-direction:column;max-width:480px}
+.cl a{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.85rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  padding:1.4rem 0;
+  border-bottom:1px solid var(--faint);
+  transition:color .2s;
+}
+.cl a:first-child{border-top:1px solid var(--faint)}
+.cl a span{color:var(--mid);transition:color .2s}
+.cl a:hover{color:var(--mid)}
+.cl a:hover span{color:var(--ink)}
+.cl a.resume-link{
+  color:var(--ink);
+  font-weight:500;
+}
+.cl a.resume-link .rl{
+  font-size:.72rem;
+  letter-spacing:.08em;
+  color:var(--mid);
+  font-weight:400;
+  font-family:var(--serif);
+  font-style:italic;
+}
+
+footer{
+  border-top:1px solid var(--faint);
+  padding:1.75rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+footer span{
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--mid);
+}
+
+@media(max-width:900px){
+  nav{padding:1.25rem 1.5rem}.nav-links li:not(:last-child){display:none}
+  #hero{padding:0 1.5rem 2.5rem}
+  section{padding:5rem 1.5rem}
+  #about .ag{grid-template-columns:1fr;gap:3.5rem}
+  .exp-row{grid-template-columns:40px 1fr;gap:1.5rem}.exp-body{display:none}
+  .eg{grid-template-columns:1fr}
+  .pr{grid-template-columns:40px 1fr;gap:1.5rem}.pd{display:none}
+  .sk-row{grid-template-columns:1fr;gap:.75rem}
+  #contact{padding:6rem 1.5rem 5rem}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="nav-mark">H. Hill</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="Hill_Henry_Resume_4_2026.pdf" class="nav-resume" target="_blank">R&eacute;sum&eacute;</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-body">
+    <p class="hero-kicker">Security-focused Information Technology Student &mdash; Orlando, FL</p>
+    <h1 class="hero-name">Henry<em>Hill</em></h1>
+    <p class="hero-desc">
+      <strong>Systems hardening. Zero-trust architecture. Security automation.</strong><br>
+      CompTIA Security+ certified. UCF B.S. Information Technology, 2026.<br>
+      Finding the gaps. Closing the loop.
+    </p>
+  </div>
+  <div class="hero-foot">
+    <span class="hero-foot-note">Incoming Solutions Analyst at Deloitte</span>
+    <a href="#contact" class="hero-cta">Get in touch</a>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="about">
+  <span class="s-num reveal">01 &mdash; About</span>
+  <h2 class="st reveal">Learning to engineer peace.</h2>
+  <div class="ag">
+    <div class="ac reveal">
+			<p>The first time I <strong>understood</strong> what real-world security actually looked like, I was standing in the most chaotic server room I had ever seen: cables everywhere, systems unlabeled, years of quick work stacked on top of each other. In that room, a question unsettled me in a way I still carry: how many systems do we trust are only &ldquo;secure&rdquo; because no one has looked <strong>closely</strong> enough?</p>
+			<p>That question sent me to HackUCF, where an attack-and-defend competition called the Horse Plinko Cyber Challenge lit the match. I had a lot to learn, but I was <strong>hooked</strong>. The patience, the lateral thinking, the satisfaction of finding the crack that had gone under the radar.</p>
+			<p>An internship at B2 Solutions sharpened that instinct against real enterprise environments. A homelab built from my apartment with a MikroTik firewall, Cisco switch, VLANs, Splunk, Wireshark, and more. It afforded me the space to practice and learn with no consequences, where the only goal is <strong>understanding</strong>. A semester studying Cloud Computing and IoT in Zurich broadened the frame further.</p>
+    </div>
+    <div class="ac reveal">
+			<p>Studying for the CompTIA Security+ felt like finally reading the manual for something I had been operating on <strong>intuition</strong>. The concepts connected, the architecture of the discipline snapped into focus, and I closed my study materials one morning not just to pass, but to go further.</p>
+			<p>That ambition has a next chapter. I&rsquo;m joining <strong>Deloitte as a Solutions Analyst</strong> &mdash; stepping into one of the most complex enterprise environments in the world, where the scale of the problems matches the depth of preparation I&rsquo;ve been building toward.</p>
+			<p>And I&rsquo;m not stopping there. I&rsquo;ve been accepted into <strong>Northeastern's Master of Science in Cybersecurity</strong> program, moving from practitioner to architect, from closing individual gaps to understanding the structural conditions that create them. The questions that have driven me this far are about to get a lot more interesting.</p>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<section id="education">
+  <span class="s-num reveal">02 &mdash; Education</span>
+  <h2 class="st reveal">Where I've learned so far.</h2>
+  <div class="eg reveal">
+    <div class="ec">
+      <div class="et">B.S. Information Technology</div>
+      <div class="es">University of Central Florida</div>
+      <div class="el">GPA 3.5 &middot; Dean&rsquo;s List</div>
+      <div class="el">HackUCF &middot; LEAD Scholars Academy</div>
+	  <div class="el">Orlando, Florida</div>
+      <div class="el" style="margin-top:1rem;font-size:.82rem">System Admin &amp; Maintenance &middot; Ethics of Computing &amp; Technology &middot; Enterprise Computing&middot; Web-Based IT</div>
+      <div class="el" style="margin-top:1.25rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase">August 2023 &mdash; August 2026</div>
+    </div>
+    <div class="ec">
+      <div class="et">Study Abroad</div>
+      <div class="es">Zurich University of Applied Sciences</div>
+	  <div class="el">Erasumus Student Network</div>
+      <div class="el">Zurich, Switzerland</div>
+      <div class="el" style="margin-top:1rem;font-size:.82rem">Internet of Things 2 &middot; Cloud Computing 2 &middot; German 1</div>
+
+      <div class="el" style="margin-top:1.25rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase">January 2025 &mdash; July 2025</div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="experience">
+  <span class="s-num reveal">03 &mdash; Experience</span>
+  <h2 class="st reveal">Where I&rsquo;ve worked.</h2>
+  <div class="exp-row reveal">
+    <div class="exp-idx">001</div>
+    <div>
+      <div class="exp-title">Systems Administration Intern</div>
+      <div class="exp-meta">B2 Solutions &mdash; Cape Coral, FL<br>May 2024 &mdash; Aug 2024</div>
+      <div class="chips"><span class="chip">DattoRMM</span><span class="chip">Kaseya</span><span class="chip">Cisco Meraki</span><span class="chip">PowerShell</span><span class="chip">.NET</span><span class="chip">Windows Server 2022</span><span class="chip">ITGlue</span><span class="chip">MFA Migration</span></div>
+    </div>
+    <div class="exp-body">Performed vulnerability and configuration assessments across 20+ client networks. Supported cloud, MFA, and tenant migrations while standardizing ITGlue documentation to strengthen security posture and reduce operational risk.<br><br>Developed PowerShell and .NET components inside DattoRMM to automate security workflows &mdash; cutting remediation time by over 50% across all client tenants.</div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="projects">
+  <span class="s-num reveal">04 &mdash; Projects</span>
+  <h2 class="st reveal">Things I&rsquo;ve built.</h2>
+  <p class="pl reveal">Independent projects, academic work, and professional accomplishments, each a building block of understanding.</p>
+  <div class="pr reveal">
+    <div class="pi">001</div>
+    <div>
+      <div class="pn">Systems Virtualization<br>ECHO Volunteering</div>
+      <div class="pd-date">March 2026 </div>
+      <div class="chips"><span class="chip">Proxmox VE</span><span class="chip">Home Assistant</span><span class="chip">IoT</span><span class="chip">Windows 11 VMs</span></div>
+    </div>
+    <div class="pd">Implemented a secure virtualized infrastructure for an administrative media room. Configured Home Assistant, Companion, and Windows 11 VMs to build full automation and IoT device orchestration for the facility. Designed to work with a Streamdeck to set up a one button solution for presentation.</div>
+  </div>
+  <div class="pr reveal">
+    <div class="pi">002</div>
+    <div>
+      <div class="pn">Enterprise Homelab</div>
+      <div class="pd-date">August 2024 &mdash; Present</div>
+      <div class="chips"><span class="chip">MikroTik</span><span class="chip">Splunk</span><span class="chip">Wireshark</span><span class="chip">Zero-Trust</span><span class="chip">VLANs</span></div>
+    </div>
+    <div class="pd">Segmented enterprise-style network with MikroTik firewall, Cisco SG300 switch, VLANs, network-wide VPN, and zero-trust / defense-in-depth architecture. Splunk a:nd Wireshark for SIEM and incident response. Syncthing for data redundancy and file-sharing.</div>
+  </div>
+  <div class="pr reveal">
+    <div class="pi">003</div>
+    <div>
+      <div class="pn">Book Tracker<br>LAMP Stack App</div>
+      <div class="pd-date">August 2025 &mdash; December 2025</div>
+	  <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Apache</span><span class="chip">RBAC</span><span class="chip">Linux</span></div>
+    </div>
+    <div class="pd">Full-stack LAMP application with secure user authentication, hashed credentials, and role-based access controls. Publishable, persistent reading lists with progress tracking and ratings, from ideation to production.</div>
+  </div>
+  <div class="pr reveal">
+    <div class="pi">004</div>
+    <div>
+      <div class="pn">Kubernetes Development</div>
+      <div class="pd-date">January 2025 &mdash; July 2025</div>
+	  <div class="chips"><span class="chip">Kubernetes</span><span class="chip">DevOps</span><span class="chip">API Gateways</span><span class="chip">TLS</span></div>
+    </div>
+    <div class="pd">This comprehensive project I completed in my Cloud Computing 2 course at ZHAW involved the end-to-end setup, configuration, deployment, and management of distributed applications within a multi-node Kubernetes (K3S) cluster, emphasizing cloud-native patterns and operational best practices. </div>
+  </div>
+  <div class="pr reveal">
+    <div class="pi">005</div>
+    <div>
+		<div class="pn">Microsoft 365 to<br>Google Workspace</div>
+      <div class="pd-date">May 2024 &mdash; August 2024</div>
+      <div class="chips"><span class="chip">Microsoft Azure AD/Intune</span><span class="chip">Microsoft Server/10</span><span class="chip">Powershell</span><span class="chip">Active Directory</span></div>
+    </div>
+    <div class="pd">While at my internship at B2 Solutions, I built and loaded a production Windows Server 2022 R2 machine, and assisted the migration of credentials/data. Worked with team members to migrate a business from Microsoft 365 to Google Workspace on the backend and on-site at several locations with 50+ users.</div>
+
+  </div>
+
+</section>
+
+<div class="hr"></div>
+
+<section id="skills">
+  <span class="s-num reveal">05 &mdash; Skills</span>
+  <h2 class="st reveal">What I've learned.</h2>
+  <div class="sb">
+    <div class="sk-row reveal">
+      <div class="sgt">Certifications</div>
+      <ul class="sgl">
+		<li>CompTIA Security+</li><li>MTA Network Fundementals</li><li>Microsoft Office</li>
+      </ul>
+    </div>
+    <div class="sk-row reveal">
+      <div class="sgt">Network &amp; Security</div>
+      <ul class="sgl">
+        <li>MikroTik</li><li>Cisco Meraki</li><li>VLANs &amp; Firewall Rules</li><li>Zero-Trust Architecture</li><li>Defense-in-Depth</li><li>Wireshark</li><li>VPN</li>
+      </ul>
+    </div>
+    <div class="sk-row reveal">
+      <div class="sgt">SIEM &amp; Monitoring</div>
+      <ul class="sgl">
+        <li>Splunk</li><li>Huntress</li><li>DattoRMM</li><li>Kaseya Suite</li>
+      </ul>
+    </div>
+    <div class="sk-row reveal">
+      <div class="sgt">Scripting &amp; Development</div>
+      <ul class="sgl">
+			  <li>PowerShell</li><li>Bash</li><li>Python</li><li>Java</li><li>PHP</li><li>SQL</li><li>C/C++</li>
+      </ul>
+    </div>
+    <div class="sk-row reveal">
+      <div class="sgt">Infrastructure</div>
+      <ul class="sgl">
+			  <li>Windows Server</li><li>Linux (Ubuntu)</li><li>Proxmox VE</li><li>Hyper-V</li><li>Kubernetes</li><li>Home Assistant</li><li>Syncthing</li><li>ITGlue</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="leadership">
+  <span class="s-num reveal">06 &mdash; Leadership &amp; Involvement</span>
+  <h2 class="st reveal">Beyond the terminal.</h2>
+  <div class="exp-row reveal">
+    <div class="exp-idx">001</div>
+    <div>
+      <div class="exp-title">ECHO Volunteering</div>
+      <div class="exp-meta">North Fort Myers, FL<br>Mar 2026 &mdash; Present</div>
+      <div class="chips"><span class="chip">Technical Infrastructure</span><span class="chip"></span><span class="chip">Skilled Volunteering</span></div>
+    </div>
+    <div class="exp-body">Volunteering technical expertise to build and maintain virtualized infrastructure for ECHO's media room and administrative HQ, applying professional-grade skills. In addition, I worked with the Nursery, Propogation, and Farmer's Market teams to support the nonprofit mission.</div>
+  </div>
+  <div class="exp-row reveal">
+    <div class="exp-idx">002</div>
+    <div>
+      <div class="exp-title">HackUCF</div>
+      <div class="exp-meta">University of Central Florida<br>Aug 2023 &mdash; Present</div>
+      <div class="chips"><span class="chip">CTF Competitions</span><span class="chip">Attack &amp; Defend</span><span class="chip">Cyber Club</span></div>
+    </div>
+    <div class="exp-body">Member of UCF's cybersecurity club. Participated in capture-the-flag and attack-and-defend competitions including the Horse Plinko Cyber Challenge, the event that first ignited a large interest in security.</div>
+  </div>
+  <div class="exp-row reveal">
+    <div class="exp-idx">003</div>
+    <div>
+      <div class="exp-title">LEAD Scholars Academy</div>
+      <div class="exp-meta">University of Central Florida<br>Aug 2023 &mdash; Present</div>
+      <div class="chips"><span class="chip">Leadership Development</span><span class="chip">Community Service</span><span class="chip">Servant Leadership</span><span class="chip">Leadership Education</span></div>
+    </div>
+    <div class="exp-body">Member of UCF's LEAD Scholars Academy, a program focused on leadership development, civic engagement, and building a community of driven students committed to making an impact beyond the classroom. Led and participated in several semester-long leadership projects, with the SERV Community, Orange County Public Schools, and ECHO Hope for Hunger.</div>
+  </div>
+
+  <div class="exp-row reveal">
+    <div class="exp-idx">004</div>
+    <div>
+      <div class="exp-title">Eagle Scout Award</div>
+	  <div class="exp-meta">Scouts BSA<br>May 2020</div>
+      <div class="chips"><span class="chip">Team Leadership</span><span class="chip">Project Management</span><span class="chip">Logistics</span><span class="chip">Servant Leadership</span></div>
+    </div>
+    <div class="exp-body">Led 25+ volunteers in a hurricane recovery project to earn the Eagle Scout rank. Coordinated all logistics, managed resources, and made lasting environmental impact. Communication, project management, and leading by example: skills that transfer everywhere.</div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="contact">
+  <h2 class="ch reveal">Finding the gaps. Closing the loop. </em></h2>
+  <div class="cl reveal">
+    <a href="Hill_Henry_Resume_4_2026.pdf" class="resume-link" target="_blank">
+      R&eacute;sum&eacute; <span class="rl">PDF download</span>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#bcd4d5d0d0dfd4d9d2cec5fcdbd1ddd5d092dfd3d1">Email <span>&rarr;</span></a>
+    <a href="https://linkedin.com/in/ithenryhill" target="_blank">LinkedIn <span>&rarr;</span></a>
+    <a href="https://github.com/henrychill" target="_blank">GitHub <span>&rarr;</span></a>
+  </div>
+</section>
+
+<footer>
+  <span>Henry Hill</span>
+  <span>CompTIA Security+ &middot; UCF &rsquo;26 &middot; Orlando, FL</span>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(es=>{
+  es.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),(i%4)*100);obs.unobserve(e.target)}
+  });
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.style.background=window.scrollY>60?'rgba(245,242,236,.94)':'transparent';
+  nav.style.backdropFilter=window.scrollY>60?'blur(10px)':'none';
+});
+</script>
